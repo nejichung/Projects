@@ -1,0 +1,38 @@
+2019-02-25T09:40:33.697 : TaxPersistenceException caught.
+2019-02-25T09:40:37.976 : TaxPersistenceException caught.
+2019-02-25T09:43:19.163 : TaxPersistenceException caught.
+2019-02-25T09:43:40.368 : TaxPersistenceException caught.
+2019-02-25T09:43:42.662 : TaxPersistenceException caught.
+2019-02-25T09:44:56.901 : TaxPersistenceException caught.
+2019-02-25T09:44:58.321 : TaxPersistenceException caught.
+2019-02-25T09:46:13.907 : TaxPersistenceException caught.
+2019-02-25T09:46:15.766 : TaxPersistenceException caught.
+2019-02-25T09:46:17.217 : TaxPersistenceException caught.
+2019-02-25T09:46:19.714 : TaxPersistenceException caught.
+2019-02-25T09:54:12.684 : TaxPersistenceException caught.
+2019-02-25T09:54:16.443 : TaxPersistenceException caught.
+2019-02-25T09:59:18.591 : TaxPersistenceException caught.
+2019-02-25T09:59:20.573 : TaxPersistenceException caught.
+2019-02-25T10:00:50.760 : TaxPersistenceException caught.
+2019-02-25T10:01:13.582 : TaxPersistenceException caught.
+2019-02-25T10:14:27.766 : TaxPersistenceException caught.
+2019-02-25T10:14:30.283 : TaxPersistenceException caught.
+2019-02-25T10:14:37.713 : TaxPersistenceException caught.
+2019-02-25T10:14:40.443 : TaxPersistenceException caught.
+2019-02-25T10:21:23.537 : TaxPersistenceException caught.
+2019-02-25T10:32:25.196 : TaxPersistenceException caught.
+2019-02-25T10:32:27.723 : TaxPersistenceException caught.
+2019-02-25T12:38:36.667 : TaxPersistenceException caught.
+2019-02-25T12:39:52.155 : TaxPersistenceException caught.
+2019-02-28T12:35:11.512 : 2019-08-20is not a valid date.
+2019-02-28T12:36:57.588 : 2019-08-20is not a valid date.
+2019-02-28T12:39:00.486 : 2019-08-20is not a valid date.
+2019-02-28T12:44:08.760 : 2019-08-20is not a valid date.
+2019-02-28T13:10:30.010 : InvalidDateException caught.
+2019-02-28T14:38:38.411 : InvalidDateException caught.
+2019-02-28T15:20:13.066 : InvalidDateException caught.
+2019-02-28T15:22:12.833 : InvalidDateException caught.
+2019-02-28T15:22:40.457 : InvalidDateException caught.
+2019-02-28T15:24:16.622 : InvalidDateException caught.
+2019-02-28T15:25:35.207 : InvalidDateException caught.
+2019-02-28T15:37:33.289 : InvalidDateException caught.

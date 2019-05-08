@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Sightings</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="col-12-m-1 text-center"
+             th:if="${errors!=null && !errors.isEmpty()}">
+            <p class="alert alert-danger" th:each="error : ${errors}"
+               th:text="${error.message}">Error message</p>
+        </div>
+
+        <div class="container">
+            <div class="row m-4">
+                <div class="col text-center border border-dark">
+                    <h1><a href="/" class="text-dark">Sightings</a></h1>
+                </div>
+            </div>
+            <div class="row m-4 border border-dark">
+                <div class="col text-center m-3">
+                    <a href="/" class="btn btn-outline-primary btn-lg">HomerSimpson</a>
+                </div>
+                <div class="col text-center m-3">
+                    <a href="supers" class="btn btn-outline-primary btn-lg">Supers</a>
+                </div>
+                <div class="col text-center m-3">
+                    <a href="organizations" class="btn btn-outline-primary btn-lg">Organizations</a>
+                </div>
+                <div class="col text-center m-3">
+                    <a href="sightings" class="btn btn-outline-primary btn-lg">Sightings</a>
+                </div>
+                <div class="col text-center m-3">
+                    <a href="locations" class="btn btn-outline-primary btn-lg">Locations</a>
+                </div>
+            </div>
+            <div class="row m-4 border border-dark">
+                <div class="col text-center m-3">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>SightingID</th>
+                                <th>Details</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="sig,iterationStatus : ${allSightings}">
+                                <td th:text="${sig.sightingID}">SightingID</td>
+                                <!--                      
+                                <!--      failed this cuz singleLocation was null                  <td><a href="#" th:href="@{/locationDetails(id=${sig.locationID})}" th:text="${singleLocation.locationName}"></a></td>-->
+                                <td><a href="#" th:href="@{/sightingDetails(id=${sig.sightingID})}">Details</a></td>
+                                <td><a href="#" th:href="@{/editSighting(id=${sig.sightingID})}">Edit</a></td>
+                                 <td><a href="#" th:href="@{/deleteSighting(id=${sig.sightingID})}">Delete</a></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class ="row">
+                <form action ="/addSighting" method ="POST" th:object="${toAdd}"> 
+                    <div class="form-group row">
+                        <label for="superID">Super(s): </label>
+                        <div class="col-md-6">
+                            <select id="superID"
+                                    name="selectedSuperIDs"
+                                    multiple="multiple"
+                                    class="form-control">
+                                <option th:each="singleSuper : ${allSupers}" 
+                                        th:value ="${singleSuper.superID}"
+                                        th:text="${singleSuper.superName}">
+
+                                </option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="form-group row">
+                        <label for="locationID">Location: </label>
+                        <div class="col-md-6">
+                            <select id="locationID"
+                                    name="sighting.locationID"
+                                    class="form-control">
+                                <option th:each="singleLocation : ${allLocations}" 
+                                        th:value ="${singleLocation.locationID}"
+                                        th:text="${singleLocation.locationName}">
+                                </option>
+                            </select>
+                        </div>
+                    </div> 
+                        <div class="form-row show-inputbtns">
+                            <input type="date" data-date-inline-picker="false" data-date-open-on-focus="true" name="sighting.date" id="date"/>
+                        </div>
+
+                    <input type="submit" value="Add Sighting">
+
+                    <!--                    <div class="form-group row">
+                                            <label for="roleIdList" class="col-md-2 control-label">Roles:</label>
+                                            <div class="col-md-6">
+                                                <select id="roleIdList" 
+                                                        name="roleIdList" 
+                                                        multiple="multiple" 
+                                                        class="form-control">
+                                                    <option th:each="currentRole : ${roles}"
+                                                            th:value="${currentRole.id}" 
+                    \                                            th:text="${currentRole.roleName}">
+                                                        </option>
+                                                   
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button type="submit">Add User</button>
+                                            </div>
+                                        </div>-->
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Supers</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="col-12-m-1 text-center"
+             th:if="${errors!=null && !errors.isEmpty()}">
+            <p class="alert alert-danger" th:each="error : ${errors}"
+               th:text="${error.message}">Error message</p>
+        </div>
+        <div class="container">
+            <div class="row m-4">
+                <div class="col text-center border border-dark">
+                    <h1><a href="/" class="text-dark">Organizations</a></h1>
+                </div>
+            </div>
+            <div class="row m-4 border border-dark">
+                <div class="col text-center m-3">
+                    <a href="/" class="btn btn-outline-primary btn-lg">HomerSimpson</a>
+                </div>
+                <div class="col text-center m-3">
+                    <a href="supers" class="btn btn-outline-primary btn-lg">Supers</a>
+                </div>
+                <div class="col text-center m-3">
+                    <a href="organizations" class="btn btn-outline-primary btn-lg">Organizations</a>
+                </div>
+                <div class="col text-center m-3">
+                    <a href="sightings" class="btn btn-outline-primary btn-lg">Sightings</a>
+                </div>
+                <div class="col text-center m-3">
+                    <a href="locations" class="btn btn-outline-primary btn-lg">Locations</a>
+                </div>
+            </div>
+
+            <div class="row m-4 border border-dark">
+                <div class="col text-center m-3">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+<!--                                <th>OrganzationID</th>-->
+                                <th>Name</th>
+<!--                                <th>Description</th>-->
+                                <th>Address</th>
+<!--                                <th>Phone Number</th>
+                                <th>Email Address</th>
+                                <th>SuperID</th>-->
+                                <th>Details</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                    <tr th:each="org,iterationStatus : ${allOrganizations}">
+<!--                        <td th:text="${org.organizationID}">OrganizationID</td>-->
+                        <td th:text="${org.organizationName}">Name</td>
+<!--                        <td th:text="${org.description}">Description</td>-->
+                        <td th:text="${org.address}">Address</td>
+<!--                        <td th:text="${org.phoneNumber}">Phone Number</td>-->
+<!--                        <td th:text="${org.emailAddress}">Email Address</td>
+                        <td th:text="${org.superID}">SuperID</td>-->
+                        <td><a href="#" th:href="@{/organizationDetails(id=${org.organizationID})}">Details</a></td>
+                        <td><a href="#" th:href="@{/editOrganization(id=${org.organizationID})}">Edit</a></td>
+                        <td><a href="#" th:href="@{/deleteOrganization(id=${org.organizationID})}">Delete</a></td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+                
+        </div>
+            <div class ="col-12 text-center">
+                <form action ="/addOrganization" method ="POST" th:object="${toAdd}"> 
+                    Name: <input type="text" name="org.organizationName" th:value="${organizationName}"><br>
+
+                    Description: <input type="text" name="org.description" th:value="${description}"><br>
+
+                    Address: <input type="text" name="org.address" th:value="${address}"><br>
+                    
+                    Phone Number: <input type="text" name="org.phoneNumber" th:value="${phoneNumber}"><br>
+                    
+                    Email: <input type="text" name="org.emailAddress" th:value="${emailAddress}"><br>
+                    
+                    <div class="form-group row">
+                        <label for="superID">Super(s): </label>
+                        <div class="col-md-6">
+                            <select id="superID"
+                                    name="selectedSuperIDs"
+                                    multiple="multiple"
+                                    class="form-control">
+                                <option th:each="singleSuper : ${allSupers}" 
+                                        th:value ="${singleSuper.superID}"
+                                        th:text="${singleSuper.superName}">
+
+                                </option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <input type="submit" value="Add Organization">
+                </form>
+            </div>
+<!--        <div th:each="org,iterationStatus : ${allOrganizations}">
+            <span th:text="${org.organizationID}"></span>
+            <span th:text="${org.organizationName}"></span>
+            <span th:text="${org.description}"></span>
+            <span th:text="${org.address}"></span>
+            <span th:text="${org.phoneNumber}"></span>
+            <span th:text="${org.emailAddress}"></span>
+            <span th:text="${org.superID}"></span>
+        </div>-->
+    </div>
+</body>
+</html>

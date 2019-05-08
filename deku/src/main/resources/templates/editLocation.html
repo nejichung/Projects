@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Edit Location</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    </head>
+    <body>
+        <form action="/editLocation" method="POST">
+            Name: <input type="text" name="location.locationName" th:value="${vm.location.locationName}">
+            Description: <input type="text" name="location.description" th:value="${vm.location.description}">
+            Address : <input type="text" name="location.address" th:value="${vm.location.address}">
+            Latitude : <input type="text" name="location.latitude" th:value="${vm.location.latitude}">
+            Longitude : <input type="text" name="location.longitude" th:value="${vm.location.longitude}">  
+            
+<!--                <select multiple name="selectedSightingIDs">
+                <option
+                    th:each="sighting : ${vm.allSightings}"
+                    th:value="${sighting.sightingID}"
+                    th:text="${sighting.date}"
+                    th:selected="${vm.location.hasSighting(sighting.sightingID)}"/>
+            </select>-->
+                <input type="submit">
+                <input type="hidden" name="location.locationID" th:value="${vm.location.locationID}">
+        </form>
+    </body>
+</html>

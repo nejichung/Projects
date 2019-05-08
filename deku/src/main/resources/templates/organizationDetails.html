@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Organizations Details</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <div class="container">
+            <div class="row m-4">
+                <div class="col text-center border border-dark">
+                    <h1><a href="/" class="text-dark">Organization Details</a></h1>
+                </div>
+            </div>
+            <div class="row m-4 border border-dark">
+                <div class="col text-center m-3">
+                    <a href="/" class="btn btn-outline-primary btn-lg">HomerSimpson</a>
+                </div>
+                <div class="col text-center m-3">
+                    <a href="supers" class="btn btn-outline-primary btn-lg">Supers</a>
+                </div>
+                <div class="col text-center m-3">
+                    <a href="organizations" class="btn btn-outline-primary btn-lg">Organizations</a>
+                </div>
+                <div class="col text-center m-3">
+                    <a href="sightings" class="btn btn-outline-primary btn-lg">Sightings</a>
+                </div>
+                <div class="col text-center m-3">
+                    <a href="locations" class="btn btn-outline-primary btn-lg">Locations</a>
+                </div>
+            </div>
+
+            <div class="row m-4 border border-dark">
+                <div class="col text-center m-3">
+                    <div class="row m-4">
+                        <div class="col text-center">
+                            <span><strong> Organization ID: </strong></span> <span th:text="${organization.organizationID}"></span>
+                        </div>
+                    </div>
+                    <div class="row m-4">
+                        <div class="col text-center">
+                            <span><strong> Name: </strong></span> <span th:text="${organization.organizationName}"></span>
+                        </div>
+                    </div>
+                    <div class="row m-4">
+                        <div class="col text-center">
+                            <span><strong> Description: </strong></span> <span th:text="${organization.description}"></span>
+                        </div>
+                    </div>
+                    <div class="row m-4">
+                        <div class="col text-center">
+                            <span><strong> Address: </strong></span> <span th:text="${organization.address}"></span>
+                        </div>
+                    </div>
+                    <div class="row m-4">
+                        <div class="col text-center">
+                            <span><strong> Phone Number: </strong></span> <span th:text="${organization.phoneNumber}"></span>
+                        </div>
+                    </div>
+                    <div class="row m-4">
+                        <div class="col text-center">
+                            <span><strong> Email: </strong></span> <span th:text="${organization.emailAddress}"></span>
+                        </div>
+                    </div>
+                    <div class="row m-4">
+                        <div class="col text-center">
+                            <span><strong> Supers </strong></span>
+                            <span>
+                            <li th:each="singleSuper : ${organization.allSupers}">
+                                <a th:text="${singleSuper.superName}" th:href="@{/superDetails(id=${singleSuper.superID})}"></a>
+                            </li>
+                            </span>
+                        </div>
+                    </div>
+                    
+<!--                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>OrganzationID</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Address</th>
+                                <th>Phone Number</th>
+                                <th>Email Address</th>
+                                <th>Supers</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="org,iterationStatus : ${organization}">
+                                <td th:text="${org.organizationID}">OrganizationID</td>
+                                <td th:text="${org.organizationName}">Name</td>
+                                <td th:text="${org.description}">Description</td>
+                                <td th:text="${org.address}">Address</td>
+                                <td th:text="${org.phoneNumber}">Phone Number</td>
+                                <td th:text="${org.emailAddress}">Email Address</td>
+
+                                <td >
+                                    <ul>
+                                        LOOP SUCCESS
+                                        <li th:each="singleSuper : ${org.allSupers}" >
+                                            <a th:text="${singleSuper.superName}" th:href="@{/superDetails(id=${singleSuper.superID})}"></a>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>-->
+                </div>
+            </div>
+    </body>
+</html>

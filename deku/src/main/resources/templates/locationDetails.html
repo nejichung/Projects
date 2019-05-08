@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Location Details</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    </head>
+    <body>
+        <div class="container">
+            <div class="row m-4">
+                <div class="col text-center border border-dark">
+                    <h1><a href="/" class="text-dark">Locations Details</a></h1>
+                </div>
+            </div>
+            <div class="row m-4 border border-dark">
+                <div class="col text-center m-3">
+                    <a href="/" class="btn btn-outline-primary btn-lg">HomerSimpson</a>
+                </div>
+                <div class="col text-center m-3">
+                    <a href="supers" class="btn btn-outline-primary btn-lg">Supers</a>
+                </div>
+                <div class="col text-center m-3">
+                    <a href="organizations" class="btn btn-outline-primary btn-lg">Organizations</a>
+                </div>
+                <div class="col text-center m-3">
+                    <a href="sightings" class="btn btn-outline-primary btn-lg">Sightings</a>
+                </div>
+                <div class="col text-center m-3">
+                    <a href="locations" class="btn btn-outline-primary btn-lg">Locations</a>
+                </div>
+            </div>
+
+            <div class="row m-4 border border-dark">
+                <div class="col text-center m-3">
+                    <div class="row m-4">
+                        <div class="col text-center">
+                            <span><strong> Location ID: </strong></span> <span th:text="${location.locationID}"></span>
+                        </div>
+                    </div>
+                    <div class="row m-4">
+                        <div class="col text-center">
+                            <span><strong> Name: </strong></span> <span th:text="${location.locationName}"></span>
+                        </div>
+                    </div>
+                    <div class="row m-4">
+                        <div class="col text-center">
+                            <span><strong> Description: </strong></span> <span th:text="${location.description}"></span>
+                        </div>
+                    </div>
+                    <div class="row m-4">
+                        <div class="col text-center">
+                            <span><strong> Address: </strong></span> <span th:text="${location.address}"></span>
+                        </div>
+                    </div>
+                    <div class="row m-4">
+                        <div class="col text-center">
+                            <span><strong> Latitude: </strong></span> <span th:text="${location.latitude}"></span>
+                        </div>
+                    </div>
+                    <div class="row m-4">
+                        <div class="col text-center">
+                            <span><strong> Longitude: </strong></span> <span th:text="${location.longitude}"></span>
+                        </div>
+                    </div>
+                    <div class="row m-4">
+                        <div class="col text-center">
+                            <span><strong> Dates </strong></span>
+                            <span>
+                            <li th:each="singleSighting : ${location.allSightings}">
+                                <a th:text="${singleSighting.date}" th:href="@{/sightingDetails(id=${singleSighting.sightingID})}"></a>
+                            </li>
+                            </span>
+                        </div>
+                    </div>
+<!--                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Location ID</th>
+                                <th>Location Name</th>
+                                <th>Description</th>
+                                <th>Address</th>
+                                <th>Latitude</th>
+                                <th>Longitude</th>
+                                <th>Dates</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr >
+                                <td th:text="${location.locationID}">Location ID</td>
+                                <td th:text="${location.locationName}">Location Name</td>
+                                <td th:text="${location.description}">Description</td>
+                                <td th:text="${location.address}">Address</td>
+                                <td th:text="${location.latitude}">Latitude</td>
+                                <td th:text="${location.longitude}">Longitude</td>
+
+                                <td>
+                                    <ul>
+                                        <li th:each="singleSighting : ${location.allSightings}">
+                                            <a th:text="${singleSighting.date}" th:href="@{/sightingDetails(id=${singleSighting.sightingID})}"></a>
+                                        </li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li th:each="singleSighting : ${allSightings}">
+                                                <li th:each="singleSuper : ${singleSighting.allSupers}">
+                                            <a th:text="${singleSighting.singleSuper.superName}" th:href="@{/superDetails(id=${singleSighting.singleSuper.superID})}"></a>
+                                        
+                                                </li>                
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>-->
+
+
+<!--                    <div class="row m-4 border border-dark">
+                        <div class="col text-center m-3">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>SightingID</th>
+                                        <th>Date</th>
+                                        <th>Supers</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+              
+                                    <tr>
+                                        <td>
+                                            <ul>
+                                                <li th:each= "singleSighting : ${loc.allSightings}">
+                                                    <a th:text="${singleSighting.sightingID}"></a>
+                                                    <a th:text="${singleSighting.date}" ></a>
+                                                        <li th:each="singleSuper : ${singleSighting.allSupers}">
+                                                             <a th:text="${singleSuper.superName}" th:href="@{/superDetails(id=${singleSuper.superID})}"></a>
+                                                         </li> 
+                                                    <a th:text="${singleSighting.}" th:href="@{/superDetails(id=${singleSighting.singleSuper.superID})}"></a>
+                                                </li>
+                                            </ul>
+                                            
+                                        </td>
+                                        <td th:text="${sig.sightingID}">SightingID</td>
+                                        <td th:text="${sig.date}">Date</td>
+                                        <td>
+                                            <ul>
+                                                <li th:each="singleSuper : ${sig.allSupers}">
+                                                    <a th:text="${singleSuper.superName}" th:href="@{/superDetails(id=${singleSuper.superID})}"></a>
+                                                </li> 
+                                            </ul>
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>-->
+
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
