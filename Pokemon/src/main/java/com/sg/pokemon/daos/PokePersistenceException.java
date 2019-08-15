@@ -5,15 +5,17 @@
  */
 package com.sg.pokemon.daos;
 
-import com.sg.pokemon.models.Pokemon;
-import java.util.List;
-import org.springframework.stereotype.Component;
-
 /**
  *
  * @author Jacob
  */
-@Component
-public class ItemDBDao implements ItemDao{
+public class PokePersistenceException extends Exception{
+    public PokePersistenceException(String message) {
+        super(message);
+    }
+
+    public PokePersistenceException(String message, Throwable ex) {
+        super(message, ex);
+    }
     
 }

@@ -5,10 +5,15 @@
  */
 package com.sg.pokemon.daos;
 
+import com.sg.pokemon.models.Pokemon;
+import java.util.List;
+
 /**
  *
  * @author Jacob
  */
 public interface PokemonDao {
+
+    public List<Pokemon> getAllPokemon() throws PokePersistenceException;
     
 }

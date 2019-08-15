@@ -6,6 +6,7 @@
 package com.sg.pokemon.controller;
 
 import com.sg.pokemon.services.PokeService;
+import com.sg.pokemon.services.response.DisplayPokemonResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,19 +17,16 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author Jacob
  */
 @Controller
-public class HomeController {
+public class PokeController {
     
     @Autowired
     PokeService service;
     
-    @GetMapping("")
-    public String homePage (Model model){
-        return "Home";
+    @GetMapping("/pokemon")
+    public String ListPokemon(Model model){
+        DisplayPokemonResponse response = service.getAllPokemon();
+        model.addAttribute("allPokemon", response.getAllPokemon());
+        
+        return "pokemon";
     }
-    @GetMapping("/items")
-    public String items (Model model){
-        return "item";
-    }
-    
-    
 }
