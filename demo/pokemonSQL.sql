@@ -11,7 +11,7 @@ PowerPoints INT);
 
 CREATE TABLE Pokemons (
 PokemonID INT PRIMARY KEY AUTO_INCREMENT,
-PokemonName varchar(20) NOT NULL,
+`Name` varchar(20) NOT NULL,
 Gender varchar(10) NOT NULL,
 Description varchar(50) NOT NULL,
 Nature varchar(20) NOT NULL,

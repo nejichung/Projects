@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.sg.pokemon.daos;
+package com.pokemons.daos;
 
-import com.sg.pokemon.models.Pokemon;
+
+import com.pokemons.models.Pokemon;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -35,7 +35,7 @@ public class PokemonDBDao implements PokemonDao {
     public List<Pokemon> getAllPokemon() throws PokePersistenceException {
         List<Pokemon> allPokemon = null;
         try{
-            allPokemon = jdbc.query("SELECT * FROM Pokemons", new PokeMapper());
+            allPokemon = jdbc.query("SELECT * FROM Pokemon", new PokeMapper());
         } catch (DataAccessException ex){
             throw new PokePersistenceException("Could not access data.", ex);
         }
@@ -48,7 +48,7 @@ public class PokemonDBDao implements PokemonDao {
         public Pokemon mapRow(ResultSet rs, int index) throws SQLException {
             Pokemon singlePokemon = new Pokemon();
             singlePokemon.setPokemonID(rs.getInt("PokemonID"));
-            singlePokemon.setPokemonName(rs.getString("Name"));
+            singlePokemon.setPokemonName(rs.getString("PokemonName"));
             singlePokemon.setGender(rs.getString("Gender"));
             singlePokemon.setDescription(rs.getString("Description"));
             singlePokemon.setNature(rs.getString("Nature"));
@@ -56,14 +56,14 @@ public class PokemonDBDao implements PokemonDao {
             singlePokemon.setBaseHealthPoints(rs.getInt("BaseHealthPoints"));
             singlePokemon.setBaseAttack(rs.getInt("BaseAttack"));
             singlePokemon.setBaseDefense(rs.getInt("BaseDefense"));
-            singlePokemon.setBaseSpecialAttack(rs.getInt("BaseSpecialAtttack"));
+            singlePokemon.setBaseSpecialAttack(rs.getInt("BaseSpecialAttack"));
             singlePokemon.setBaseSpecialDefense(rs.getInt("BaseSpecialDefense"));
             singlePokemon.setBaseSpeed(rs.getInt("BaseSpeed"));
             singlePokemon.setHealthPointEVS(rs.getInt("HealthPointEVS"));
             singlePokemon.setAttackEVS(rs.getInt("AttackEVS"));
             singlePokemon.setDefenseEVS(rs.getInt("DefenseEVS"));
             singlePokemon.setSpecialAttackEVS(rs.getInt("SpecialAttackEVS"));
-            singlePokemon.setSpecialDefenseEVS(rs.getInt("SpeicalDefenseEVS"));
+            singlePokemon.setSpecialDefenseEVS(rs.getInt("SpecialDefenseEVS"));
             singlePokemon.setSpeedEVS(rs.getInt("SpeedEVS"));
             singlePokemon.setHealthPointIVS(rs.getInt("HealthPointIVS"));
             singlePokemon.setAttackIVS(rs.getInt("AttackIVS"));
