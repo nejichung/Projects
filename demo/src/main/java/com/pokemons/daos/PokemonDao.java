@@ -16,5 +16,7 @@ import java.util.List;
 public interface PokemonDao {
 
     public List<Pokemon> getAllPokemon() throws PokePersistenceException;
+
+    public Pokemon getPokemonByID(Integer id) throws PokePersistenceException;
     
 }

@@ -39,7 +39,9 @@ Attack INT,
 Defense INT, 
 SpecialAttack INT,
 SpecialDefense INT,
-Speed INT);
+Speed INT,
+RedStat varchar(20),
+BlueStat varchar(20));
 
 CREATE TABLE PokemonsMoves(
 PokemonID INT,
@@ -68,7 +70,7 @@ ItemID INT,
 FOREIGN KEY (TrainerID) references Trainers(TrainerID),
 FOREIGN KEY (ItemID) references Items(ItemID));
 
-INSERT INTO Pokemons(PokemonID, `Name`, Gender, Description, Nature, Level, BaseHealthPoints, BaseAttack, BaseDefense, BaseSpecialAttack, BaseSpecialDefense, BaseSpeed, HealthPointEVS,
+INSERT INTO Pokemons(PokemonID, PokemonName, Gender, Description, Nature, Level, BaseHealthPoints, BaseAttack, BaseDefense, BaseSpecialAttack, BaseSpecialDefense, BaseSpeed, HealthPointEVS,
 AttackEVS, DefenseEVS, SpecialAttackEVS, SpecialDefenseEVS, SpeedEVS, HealthPointIVS, AttackIVS, DefenseIVS, SpecialAttackIVS, SpecialDefenseIVS, SpeedIVS, HealthPoints, Attack, Defense, SpecialAttack, SpecialDefense, Speed)
 VALUES
 ('1','Snorlax','Male','Best Pokemon Ever','Impish','100','160','110','65','65','110','30','252','4','252','0','0','0','31','31','31','31','31','31','524','257','251','149','256','96');
@@ -93,7 +95,7 @@ VALUES
 
 INSERT INTO Items(ItemID, ItemName, Description)
 VALUES
-('1','Full Restore','Heal selected Pokemon to full health and all removes status effects.');
+('1','Full Restore','Heal selected Pokemon to full health and removes all status effects.');
 
 INSERT INTO TrainersPokemons(TrainerID, PokemonID)
 VALUES

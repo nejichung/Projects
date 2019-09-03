@@ -6,8 +6,10 @@
 package com.pokemons.controller;
 
 
+import com.pokemons.models.Pokemon;
 import com.pokemons.services.PokeService;
 import com.pokemons.services.responses.DisplayPokemonResponse;
+import com.pokemons.services.responses.PokemonDetailsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,5 +31,14 @@ public class PokeController {
         model.addAttribute("allPokemon", response.getAllPokemon());
         
         return "pokemon";
+    }
+    
+    @GetMapping("/pokemonDetails")
+    public String pokemonDetails(Integer id, Model model){
+        PokemonDetailsResponse response = service.getPokemonDetails(id);
+        Pokemon singlePokemon = response.getSinglePokemon();
+        model.addAttribute("singlePokemon", singlePokemon);
+        
+        return "pokemonDetails";
     }
 }

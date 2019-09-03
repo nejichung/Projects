@@ -15,5 +15,7 @@ import java.util.List;
 public interface MoveDao {
 
     public List<Move> getAllMoves() throws MovePersistenceException;
+
+    public Move getMoveByID(Integer id) throws MovePersistenceException;
     
 }

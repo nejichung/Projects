@@ -42,6 +42,8 @@ public class Pokemon {
     private int specialAttackIVS;
     private int specialDefenseIVS;
     private int speedIVS;
+    private String redStat;
+    private String blueStat;
     private List<Move> allMoves;
 
     /**
@@ -476,5 +478,33 @@ public class Pokemon {
      */
     public void setBaseSpeed(int baseSpeed) {
         this.baseSpeed = baseSpeed;
+    }
+
+    /**
+     * @return the redStat
+     */
+    public String getRedStat() {
+        return redStat;
+    }
+
+    /**
+     * @param redStat the redStat to set
+     */
+    public void setRedStat(String redStat) {
+        this.redStat = redStat;
+    }
+
+    /**
+     * @return the blueStat
+     */
+    public String getBlueStat() {
+        return blueStat;
+    }
+
+    /**
+     * @param blueStat the blueStat to set
+     */
+    public void setBlueStat(String blueStat) {
+        this.blueStat = blueStat;
     }
 }

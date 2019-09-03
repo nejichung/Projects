@@ -5,8 +5,10 @@
  */
 package com.pokemons.controller;
 
+import com.pokemons.models.Move;
 import com.pokemons.services.PokeService;
 import com.pokemons.services.responses.DisplayMovesResponse;
+import com.pokemons.services.responses.MoveDetailsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,4 +30,12 @@ public class MoveController {
         model.addAttribute("allMoves", response.getAllMoves());
         return "move";
 }
+    @GetMapping("/moveDetails")
+    public String moveDetails(Integer id, Model model){
+        MoveDetailsResponse response = service.getMoveDetails(id);
+        Move singleMove = response.getSingleMove();
+        model.addAttribute("singleMove", singleMove);
+        
+        return "moveDetails";
+    }
 }

@@ -5,15 +5,17 @@
  */
 package com.pokemons.daos;
 
-import com.pokemons.models.Item;
-import java.util.List;
-
 /**
  *
  * @author Jacob
  */
-public interface ItemDao {
+public class ItemPersistenceException extends Exception {
+    public ItemPersistenceException(String message) {
+        super(message);
+    }
 
-    public List<Item> getAllItems() throws ItemPersistenceException;
+    public ItemPersistenceException(String message, Throwable ex) {
+        super(message, ex);
+    }
     
 }

@@ -16,20 +16,45 @@ and open the template in the editor.
         
         <header class="container">
      
-            <nav class="navigationbar">
-                
-                    <a href="/pokemon" class="btn btn-outline-primary btn-lg header-button">Pokemon</a>
-                
-                    <a href="/items" class="btn btn-outline-primary btn-lg header-button">Items</a>  
-                    
-                    <a href="/moves" class="btn btn-outline-primary btn-lg header-button">Moves</a>
-                
-                    <a href="/trainers" class="btn btn-outline-primary btn-lg header-button">Trainers</a>
-            </nav>
-            
-            <br>
+            <div class="row m-4">
+                <div class="col text-center m-3">
+                    <a href="/pokemon" class="btn btn-outline-primary btn-lg">Pokemon</a>
+                </div>
+                <div class="col text-center m-3">
+                    <a href="/items" class="btn btn-outline-primary btn-lg">Items</a>
+                </div>
+                <div class="col text-center m-3">
+                    <a href="/moves" class="btn btn-outline-primary btn-lg">Moves</a>
+                </div>
+                <div class="col text-center m-3">
+                    <a href="/trainers" class="btn btn-outline-primary btn-lg">Trainers</a>
+                </div>
+            </div>
+
             <h1><center>Items</center></h1>
-     <br>
+
+     <div class="row m-4 border border-dark">
+                <div class="col text-center m-3">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Details</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        <tbody
+                            <tr th:each="item,iterationStatus : ${allItems}">  
+                                <td th:text="${item.itemName}">Name</td>
+                                <td><a href="#" th:href="@{/itemDetails(id=${item.itemID})}">Details</a></td>
+                                <td><a href="#" th:href="@{/editItem(id=${item.itemID})}">Edit</a></td>
+                                <td><a href="#" th:href="@{/deleteItem(id=${item.itemID})}">Delete</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
      
     </body>
 </html>

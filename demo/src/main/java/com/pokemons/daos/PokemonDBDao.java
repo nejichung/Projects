@@ -35,18 +35,30 @@ public class PokemonDBDao implements PokemonDao {
     public List<Pokemon> getAllPokemon() throws PokePersistenceException {
         List<Pokemon> allPokemon = null;
         try{
-            allPokemon = jdbc.query("SELECT * FROM Pokemon", new PokeMapper());
+            allPokemon = jdbc.query("SELECT * FROM Pokemons", new PokeMapper());
         } catch (DataAccessException ex){
             throw new PokePersistenceException("Could not access data.", ex);
         }
         return allPokemon;
+    }
+
+    @Override
+    public Pokemon getPokemonByID(Integer id) throws PokePersistenceException {
+        String SELECT_POKE_BY_ID = null;
+        try{
+            SELECT_POKE_BY_ID = "SELECT * FROM Pokemons WHERE pokemonID = ?";
+        } catch(DataAccessException ex){
+            throw new PokePersistenceException("Could not access data.", ex);
+
+        }
+        return jdbc.queryForObject(SELECT_POKE_BY_ID, new PokeMapper(), id);
     }
     
      public static final class PokeMapper implements RowMapper<Pokemon> {
 
         @Override
         public Pokemon mapRow(ResultSet rs, int index) throws SQLException {
-            Pokemon singlePokemon = new Pokemon();
+            Pokemon singlePokemon = new Pokemon(); 
             singlePokemon.setPokemonID(rs.getInt("PokemonID"));
             singlePokemon.setPokemonName(rs.getString("PokemonName"));
             singlePokemon.setGender(rs.getString("Gender"));

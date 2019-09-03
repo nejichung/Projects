@@ -39,6 +39,19 @@ public class MoveDBDao implements MoveDao{
         }
         return allMoves;
     }
+
+    @Override
+    public Move getMoveByID(Integer id) throws MovePersistenceException {
+        String SELECT_MOVE_BY_ID = null;
+        try{
+            SELECT_MOVE_BY_ID = "SELECT * FROM Moves WHERE moveID = ?";
+        } catch(DataAccessException ex){
+            throw new MovePersistenceException("Could not access data.", ex);
+
+        }
+        return jdbc.queryForObject(SELECT_MOVE_BY_ID, new MoveMapper(), id);
+    }
+    
     
     public static final class MoveMapper implements RowMapper<Move> {
 
