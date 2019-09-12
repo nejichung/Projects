@@ -40,6 +40,17 @@ public class TrainerDBDao implements TrainerDao {
         }
         return allTrainers;
     }   
+
+    @Override
+    public Trainer getTrainerByID(Integer id) throws TrainerPersistenceException {
+        String SELECT_TRAINER_BY_ID = null;
+        try{
+            SELECT_TRAINER_BY_ID = "SELECT * FROM Trainers WHERE TrainerID = ?";
+        } catch (DataAccessException ex){
+            throw new TrainerPersistenceException("Could not access data.", ex);
+        }
+        return jdbc.queryForObject(SELECT_TRAINER_BY_ID, new TrainerMapper(),id);
+    }
     
      public static final class TrainerMapper implements RowMapper<Trainer> {
 

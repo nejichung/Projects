@@ -53,6 +53,19 @@ public class PokemonDBDao implements PokemonDao {
         }
         return jdbc.queryForObject(SELECT_POKE_BY_ID, new PokeMapper(), id);
     }
+
+    @Override
+    public List<Pokemon> getAllPokemonForTrainer(Integer id) throws PokePersistenceException {
+        String SELECT_POKEMON_FOR_TRAINER = null;
+        try{
+            SELECT_POKEMON_FOR_TRAINER = "SELECT * FROM Pokemons JOIN TrainersPokemons ON "
+            + "Pokemons.PokemonID = TrainersPokemons.PokemonID "
+                    + "WHERE TrainersPokemons.TrainerID = ?";        
+        } catch (DataAccessException ex){
+            throw new PokePersistenceException("Could not access data.", ex); 
+        }
+        return jdbc.query(SELECT_POKEMON_FOR_TRAINER, new PokeMapper(), id);
+    }
     
      public static final class PokeMapper implements RowMapper<Pokemon> {
 

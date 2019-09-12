@@ -39,6 +39,31 @@ public class ItemDBDao implements ItemDao{
         }
         return allItems;
     }
+
+    @Override
+    public Item getItemByID(Integer id) throws ItemPersistenceException {
+        String SELECT_ITEM_BY_ID = null;
+        try{
+            SELECT_ITEM_BY_ID = "SELECT * FROM Items WHERE ItemID = ?";
+        } catch (DataAccessException ex){
+            throw new ItemPersistenceException("Could not access data.", ex);
+            
+        }
+        return jdbc.queryForObject(SELECT_ITEM_BY_ID, new ItemMapper(), id);
+    }
+
+    @Override
+    public List<Item> getAllItemForTrainer(Integer id) throws ItemPersistenceException {
+        String SELECT_ITEM_FOR_TRAINER = null;
+        try{
+            SELECT_ITEM_FOR_TRAINER = "SELECT * FROM Items JOIN TrainersItems ON "
+            + "Items.ItemID = TrainersItems.ItemID "
+                    + "WHERE TrainersItems.TrainerID = ?";        
+        } catch (DataAccessException ex){
+            throw new ItemPersistenceException("Could not access data.", ex); 
+        }
+        return jdbc.query(SELECT_ITEM_FOR_TRAINER, new ItemMapper(), id);
+    }
     
     public static final class ItemMapper implements RowMapper<Item> {
 
@@ -48,6 +73,7 @@ public class ItemDBDao implements ItemDao{
             singleItem.setItemID(rs.getInt("ItemID"));
             singleItem.setItemName(rs.getString("ItemName"));
             singleItem.setDescription(rs.getString("Description"));
+            singleItem.setQuantity(rs.getInt("Quantity"));
 
             return singleItem;
         }

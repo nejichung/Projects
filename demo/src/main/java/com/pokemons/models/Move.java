@@ -12,6 +12,8 @@ package com.pokemons.models;
 public class Move {
     private Integer moveID;
     private String moveName;
+    private String type;
+    private String category;
     private int damage;
     private int accuracy;
     private int powerPoints;
@@ -84,5 +86,33 @@ public class Move {
      */
     public void setPowerPoints(int powerPoints) {
         this.powerPoints = powerPoints;
+    }
+
+    /**
+     * @return the type
+     */
+    public String getType() {
+        return type;
+    }
+
+    /**
+     * @param type the type to set
+     */
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    /**
+     * @return the category
+     */
+    public String getCategory() {
+        return category;
+    }
+
+    /**
+     * @param category the category to set
+     */
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

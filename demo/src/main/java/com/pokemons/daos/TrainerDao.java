@@ -15,5 +15,7 @@ import java.util.List;
 public interface TrainerDao {
 
     public List<Trainer> getAllTrainers() throws TrainerPersistenceException;
+
+    public Trainer getTrainerByID(Integer id) throws TrainerPersistenceException;
     
 }

@@ -15,5 +15,9 @@ import java.util.List;
 public interface ItemDao {
 
     public List<Item> getAllItems() throws ItemPersistenceException;
+
+    public Item getItemByID(Integer id) throws ItemPersistenceException;
+
+    public List<Item> getAllItemForTrainer(Integer id) throws ItemPersistenceException;
     
 }

@@ -60,6 +60,17 @@
                         <span><strong> Description: </strong></span> <span th:text="${singlePokemon.description}"></span>
                     </div>
                 </div>
+                <div class="row m-4">
+                    <div class="pull-left">
+                        <span><strong> Moves: </strong></span> 
+                        <span> 
+                            <li th:each="singleMove : ${singlePokemon.allMoves}">
+                                <a th:text="${singleMove.moveName}" th:href="@{/moveDetails(id=${singleMove.moveID})}"></a>
+                            </li>
+                            
+                        </span>
+                    </div>
+                </div>
 
 
             </div>

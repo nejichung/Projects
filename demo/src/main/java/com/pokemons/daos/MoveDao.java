@@ -17,5 +17,7 @@ public interface MoveDao {
     public List<Move> getAllMoves() throws MovePersistenceException;
 
     public Move getMoveByID(Integer id) throws MovePersistenceException;
+
+    public List<Move> getMovesForPokemon(Integer id) throws MovePersistenceException;
     
 }

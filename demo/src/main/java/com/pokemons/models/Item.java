@@ -13,6 +13,7 @@ public class Item {
     private Integer itemID;
     private String itemName;
     private String description;
+    private Integer quantity;
 
     /**
      * @return the itemID
@@ -54,5 +55,19 @@ public class Item {
      */
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    /**
+     * @return the quantity
+     */
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    /**
+     * @param quantity the quantity to set
+     */
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 }

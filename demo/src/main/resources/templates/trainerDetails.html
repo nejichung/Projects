@@ -1,6 +1,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>Move Details</title>
+        <title>Trainer Details</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -26,49 +26,40 @@
                 </div>
             </div>
 
-            <h1><center><span th:text="${singleMove.moveName}"></span></center></h1>
+            <h1><center><span th:text="${singleTrainer.trainerName}"></span></center></h1>
         </header>
 
         <div class="row m-4 border border-dark">
             <div class="col text-center m-3">
                 <div class="row m-4">
                     <div class="col text-center">
-                        <span><strong> Move Name: </strong></span> <span th:text="${singleMove.moveName}"></span>
+                        <span><strong> Trainer Name: </strong></span> <span th:text="${singleTrainer.trainerName}"></span>
                     </div>
                 </div>
                 <div class="row m-4">
                     <div class="col text-center">
-                        <span><strong> Move ID: </strong></span> <span th:text="${singleMove.moveID}"></span>
+                        <span><strong> Trainer ID: </strong></span> <span th:text="${singleTrainer.trainerID}"></span>
                     </div>
                 </div>
-
                 <div class="row m-4">
                     <div class="col text-center">
-                        <span><strong> Type: </strong></span> <span th:text="${singleMove.type}"></span>
+                        <span><strong> Pokemon: </strong></span> 
+                        <span> 
+                            <li th:each="singlePokemon : ${singleTrainer.allPokemon}">
+                                <a th:text="${singlePokemon.pokemonName}" th:href="@{/pokemonDetails(id=${singlePokemon.pokemonID})}"></a>
+                            </li>
+                            
+                        </span>
                     </div>
                 </div>
-
                 <div class="row m-4">
                     <div class="col text-center">
-                        <span><strong> Category: </strong></span> <span th:text="${singleMove.category}"></span>
-                    </div>
-                </div>
-
-                <div class="row m-4">
-                    <div class="col text-center">
-                        <span><strong> Damage: </strong></span> <span th:text="${singleMove.damage}"></span>
-                    </div>
-                </div>
-
-                <div class="row m-4">
-                    <div class="col text-center">
-                        <span><strong> Accuracy: </strong></span> <span th:text="${singleMove.accuracy}"></span>
-                    </div>
-                </div>
-
-                <div class="row m-4">
-                    <div class="col text-center">
-                        <span><strong> Power Points: </strong></span> <span th:text="${singleMove.powerPoints}"></span>
+                        <span><strong> Items: </strong></span> 
+                        <span>
+                            <li th:each="singleItem : ${singleTrainer.allItems}">
+                                <a th:text="${singleItem.itemName}" th:href="@{/itemDetails(id=${singleItem.itemID})}"></a>
+                            </li>
+                        </span>
                     </div>
                 </div>
             </div>

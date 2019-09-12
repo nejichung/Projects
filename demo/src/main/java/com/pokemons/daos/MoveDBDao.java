@@ -51,6 +51,19 @@ public class MoveDBDao implements MoveDao{
         }
         return jdbc.queryForObject(SELECT_MOVE_BY_ID, new MoveMapper(), id);
     }
+
+    @Override
+    public List<Move> getMovesForPokemon(Integer id) throws MovePersistenceException {
+        String SELECT_MOVES_FOR_POKEMON = null;
+        try{
+            SELECT_MOVES_FOR_POKEMON = "SELECT * FROM Moves JOIN PokemonsMoves ON "
+                    + "Moves.MoveID = PokemonsMoves.MoveID "
+                    + "WHERE PokemonsMoves.PokemonID = ?";
+        } catch (DataAccessException ex){
+            throw new MovePersistenceException("Could not access data", ex);
+        }
+        return jdbc.query(SELECT_MOVES_FOR_POKEMON, new MoveMapper(), id);
+    }
     
     
     public static final class MoveMapper implements RowMapper<Move> {
@@ -60,6 +73,8 @@ public class MoveDBDao implements MoveDao{
             Move singleMove = new Move();
             singleMove.setMoveID(rs.getInt("MoveID"));
             singleMove.setMoveName(rs.getString("MoveName"));
+            singleMove.setType(rs.getString("type"));
+            singleMove.setCategory(rs.getString("category"));
             singleMove.setDamage(rs.getInt("Damage"));
             singleMove.setAccuracy(rs.getInt("Accuracy"));
             singleMove.setPowerPoints(rs.getInt("PowerPoints"));

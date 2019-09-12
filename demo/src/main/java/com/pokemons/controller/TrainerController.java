@@ -5,8 +5,10 @@
  */
 package com.pokemons.controller;
 
+import com.pokemons.models.Trainer;
 import com.pokemons.services.PokeService;
 import com.pokemons.services.responses.DisplayTrainersResponse;
+import com.pokemons.services.responses.TrainerDetailsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,5 +30,15 @@ public class TrainerController {
         model.addAttribute("allTrainers", response.getAllTrainers());
         
         return "trainer";
+    }
+    
+    @GetMapping("/trainerDetails")
+    public String TrainerDetails(Integer id, Model model){
+        TrainerDetailsResponse response = service.getTrainerDetails(id);
+        Trainer singleTrainer = response.getSingleTrainer();
+        model.addAttribute("singleTrainer", singleTrainer);
+        
+        return "trainerDetails";
+        
     }
 }

@@ -21,8 +21,10 @@ import com.pokemons.services.responses.DisplayItemsResponse;
 import com.pokemons.services.responses.DisplayMovesResponse;
 import com.pokemons.services.responses.DisplayPokemonResponse;
 import com.pokemons.services.responses.DisplayTrainersResponse;
+import com.pokemons.services.responses.ItemDetailsResponse;
 import com.pokemons.services.responses.MoveDetailsResponse;
 import com.pokemons.services.responses.PokemonDetailsResponse;
+import com.pokemons.services.responses.TrainerDetailsResponse;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -102,10 +104,12 @@ public class PokeService {
 
         try {
             Pokemon singlePokemon = pokeDao.getPokemonByID(id);
-
+            List<Move> allMoves = moveDao.getMovesForPokemon(id);
+            singlePokemon.setAllMoves(allMoves);
+            
             response.setSinglePokemon(singlePokemon);
             response.setSuccess(true);
-        } catch (PokePersistenceException ex) {
+        } catch (PokePersistenceException | MovePersistenceException ex) {
             response.setMessage(ex.getMessage());
             response.setSuccess(false);
         }
@@ -121,6 +125,41 @@ public class PokeService {
             response.setSingleMove(singleMove);
             response.setSuccess(true);
         } catch (MovePersistenceException ex) {
+            response.setMessage(ex.getMessage());
+            response.setSuccess(false);
+        }
+        return response;
+    }
+
+    public ItemDetailsResponse getItemDetails(Integer id) {
+        ItemDetailsResponse response = new ItemDetailsResponse();
+
+        try {
+            Item singleItem = itemDao.getItemByID(id);
+
+            response.setSingleItem(singleItem);
+            response.setSuccess(true);
+        } catch (ItemPersistenceException ex) {
+            response.setMessage(ex.getMessage());
+            response.setSuccess(false);
+        }
+        return response;
+    }
+
+    public TrainerDetailsResponse getTrainerDetails(Integer id) {
+        TrainerDetailsResponse response = new TrainerDetailsResponse();
+
+        try {
+            Trainer singleTrainer = trainerDao.getTrainerByID(id);
+            List<Pokemon> allPokemon = pokeDao.getAllPokemonForTrainer(id);
+            singleTrainer.setAllPokemon(allPokemon);
+            
+            List<Item> allItems = itemDao.getAllItemForTrainer(id);
+            singleTrainer.setAllItems(allItems);
+            
+            response.setSingleTrainer(singleTrainer);
+            response.setSuccess(true);
+        } catch (TrainerPersistenceException | PokePersistenceException | ItemPersistenceException ex) {
             response.setMessage(ex.getMessage());
             response.setSuccess(false);
         }

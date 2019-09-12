@@ -39,6 +39,7 @@ and open the template in the editor.
                         <thead>
                             <tr>
                                 <th>Name</th>
+                                <th>Quantity</th>
                                 <th>Details</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
@@ -47,6 +48,7 @@ and open the template in the editor.
                         <tbody
                             <tr th:each="item,iterationStatus : ${allItems}">  
                                 <td th:text="${item.itemName}">Name</td>
+                                <td th:text="${item.quantity}">Quantity</td>
                                 <td><a href="#" th:href="@{/itemDetails(id=${item.itemID})}">Details</a></td>
                                 <td><a href="#" th:href="@{/editItem(id=${item.itemID})}">Edit</a></td>
                                 <td><a href="#" th:href="@{/deleteItem(id=${item.itemID})}">Delete</a></td>

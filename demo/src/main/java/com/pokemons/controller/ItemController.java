@@ -8,6 +8,7 @@ package com.pokemons.controller;
 import com.pokemons.models.Item;
 import com.pokemons.services.PokeService;
 import com.pokemons.services.responses.DisplayItemsResponse;
+import com.pokemons.services.responses.ItemDetailsResponse;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,4 +31,13 @@ public class ItemController {
         return "item";
     }
     
+    @GetMapping("/itemDetails")
+    public String itemDetails(Integer id, Model model){
+        ItemDetailsResponse response = service.getItemDetails(id);
+        Item singleItem = response.getSingleItem();
+        model.addAttribute("singleItem", singleItem);
+        
+        return "itemDetails";
+        
+    }
 }

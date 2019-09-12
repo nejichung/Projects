@@ -18,5 +18,7 @@ public interface PokemonDao {
     public List<Pokemon> getAllPokemon() throws PokePersistenceException;
 
     public Pokemon getPokemonByID(Integer id) throws PokePersistenceException;
+
+    public List<Pokemon> getAllPokemonForTrainer(Integer id) throws PokePersistenceException;
     
 }
