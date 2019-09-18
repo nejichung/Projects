@@ -58,9 +58,7 @@ public class PokemonDBDao implements PokemonDao {
     public List<Pokemon> getAllPokemonForTrainer(Integer id) throws PokePersistenceException {
         String SELECT_POKEMON_FOR_TRAINER = null;
         try{
-            SELECT_POKEMON_FOR_TRAINER = "SELECT * FROM Pokemons JOIN TrainersPokemons ON "
-            + "Pokemons.PokemonID = TrainersPokemons.PokemonID "
-                    + "WHERE TrainersPokemons.TrainerID = ?";        
+            SELECT_POKEMON_FOR_TRAINER = "SELECT * FROM Pokemons WHERE Pokemons.TrainerID = ?";        
         } catch (DataAccessException ex){
             throw new PokePersistenceException("Could not access data.", ex); 
         }
@@ -76,7 +74,6 @@ public class PokemonDBDao implements PokemonDao {
             singlePokemon.setPokemonName(rs.getString("PokemonName"));
             singlePokemon.setGender(rs.getString("Gender"));
             singlePokemon.setDescription(rs.getString("Description"));
-            singlePokemon.setNature(rs.getString("Nature"));
             singlePokemon.setLevel(rs.getInt("Level"));
             singlePokemon.setBaseHealthPoints(rs.getInt("BaseHealthPoints"));
             singlePokemon.setBaseAttack(rs.getInt("BaseAttack"));
@@ -103,6 +100,8 @@ public class PokemonDBDao implements PokemonDao {
             singlePokemon.setSpecialDefense(rs.getInt("SpecialDefense"));
             singlePokemon.setSpeed(rs.getInt("Speed"));
             
+            singlePokemon.setNatureID(rs.getInt("NatureID"));
+            singlePokemon.setTrainerID(rs.getInt("TrainerID"));
             return singlePokemon;
         }
     }

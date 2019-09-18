@@ -6,6 +6,7 @@
 package com.pokemons.controller;
 
 
+import com.pokemons.models.AddPokemonViewModel;
 import com.pokemons.models.Pokemon;
 import com.pokemons.services.PokeService;
 import com.pokemons.services.responses.DisplayPokemonResponse;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  *
@@ -40,5 +42,14 @@ public class PokeController {
         model.addAttribute("singlePokemon", singlePokemon);
         
         return "pokemonDetails";
+    }
+    
+    @GetMapping("addPokemon")
+    public String addPokemon(){
+        return "addPokemon";
+    }
+    @PostMapping("addPokemon")
+    public String toAddPokemon(AddPokemonViewModel vm, Model model){
+        return ListPokemon(model);
     }
 }

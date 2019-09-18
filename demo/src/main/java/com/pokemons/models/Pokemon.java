@@ -16,34 +16,37 @@ public class Pokemon {
     private String pokemonName;
     private String gender;
     private String description;
-    private String nature;
-    private int level;
-    private int baseHealthPoints;
-    private int baseAttack;
-    private int baseDefense;
-    private int baseSpecialAttack;
-    private int baseSpecialDefense;
-    private int baseSpeed;
-    private int healthPoints;
-    private int attack;
-    private int defense;
-    private int specialAttack;
-    private int specialDefense;
-    private int speed;
-    private int healthPointEVS;
-    private int attackEVS;
-    private int defenseEVS;
-    private int specialAttackEVS;
-    private int specialDefenseEVS;
-    private int speedEVS;
-    private int healthPointIVS;
-    private int attackIVS;
-    private int defenseIVS;
-    private int specialAttackIVS;
-    private int specialDefenseIVS;
-    private int speedIVS;
-    private String redStat;
-    private String blueStat;
+    
+    private Integer level;
+    private Integer baseHealthPoints;
+    private Integer baseAttack;
+    private Integer baseDefense;
+    private Integer baseSpecialAttack;
+    private Integer baseSpecialDefense;
+    private Integer baseSpeed;
+    private Integer healthPoints;
+    private Integer attack;
+    private Integer defense;
+    private Integer specialAttack;
+    private Integer specialDefense;
+    private Integer speed;
+    private Integer healthPointEVS;
+    private Integer attackEVS;
+    private Integer defenseEVS;
+    private Integer specialAttackEVS;
+    private Integer specialDefenseEVS;
+    private Integer speedEVS;
+    private Integer healthPointIVS;
+    private Integer attackIVS;
+    private Integer defenseIVS;
+    private Integer specialAttackIVS;
+    private Integer specialDefenseIVS;
+    private Integer speedIVS;
+    
+    private Integer natureID;
+    private Integer trainerID;
+    private Trainer singleTrainer;
+    private Nature singleNature;
     private List<Move> allMoves;
 
     /**
@@ -103,269 +106,409 @@ public class Pokemon {
     }
 
     /**
-     * @return the nature
+     * @return the level
      */
-    public String getNature() {
-        return nature;
+    public Integer getLevel() {
+        return level;
     }
 
     /**
-     * @param nature the nature to set
+     * @param level the level to set
      */
-    public void setNature(String nature) {
-        this.nature = nature;
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+
+    /**
+     * @return the baseHealthPoints
+     */
+    public Integer getBaseHealthPoints() {
+        return baseHealthPoints;
+    }
+
+    /**
+     * @param baseHealthPoints the baseHealthPoints to set
+     */
+    public void setBaseHealthPoints(Integer baseHealthPoints) {
+        this.baseHealthPoints = baseHealthPoints;
+    }
+
+    /**
+     * @return the baseAttack
+     */
+    public Integer getBaseAttack() {
+        return baseAttack;
+    }
+
+    /**
+     * @param baseAttack the baseAttack to set
+     */
+    public void setBaseAttack(Integer baseAttack) {
+        this.baseAttack = baseAttack;
+    }
+
+    /**
+     * @return the baseDefense
+     */
+    public Integer getBaseDefense() {
+        return baseDefense;
+    }
+
+    /**
+     * @param baseDefense the baseDefense to set
+     */
+    public void setBaseDefense(Integer baseDefense) {
+        this.baseDefense = baseDefense;
+    }
+
+    /**
+     * @return the baseSpecialAttack
+     */
+    public Integer getBaseSpecialAttack() {
+        return baseSpecialAttack;
+    }
+
+    /**
+     * @param baseSpecialAttack the baseSpecialAttack to set
+     */
+    public void setBaseSpecialAttack(Integer baseSpecialAttack) {
+        this.baseSpecialAttack = baseSpecialAttack;
+    }
+
+    /**
+     * @return the baseSpecialDefense
+     */
+    public Integer getBaseSpecialDefense() {
+        return baseSpecialDefense;
+    }
+
+    /**
+     * @param baseSpecialDefense the baseSpecialDefense to set
+     */
+    public void setBaseSpecialDefense(Integer baseSpecialDefense) {
+        this.baseSpecialDefense = baseSpecialDefense;
+    }
+
+    /**
+     * @return the baseSpeed
+     */
+    public Integer getBaseSpeed() {
+        return baseSpeed;
+    }
+
+    /**
+     * @param baseSpeed the baseSpeed to set
+     */
+    public void setBaseSpeed(Integer baseSpeed) {
+        this.baseSpeed = baseSpeed;
     }
 
     /**
      * @return the healthPoints
      */
-    public int getHealthPoints() {
+    public Integer getHealthPoints() {
         return healthPoints;
     }
 
     /**
      * @param healthPoints the healthPoints to set
      */
-    public void setHealthPoints(int healthPoints) {
+    public void setHealthPoints(Integer healthPoints) {
         this.healthPoints = healthPoints;
     }
 
     /**
      * @return the attack
      */
-    public int getAttack() {
+    public Integer getAttack() {
         return attack;
     }
 
     /**
      * @param attack the attack to set
      */
-    public void setAttack(int attack) {
+    public void setAttack(Integer attack) {
         this.attack = attack;
     }
 
     /**
      * @return the defense
      */
-    public int getDefense() {
+    public Integer getDefense() {
         return defense;
     }
 
     /**
      * @param defense the defense to set
      */
-    public void setDefense(int defense) {
+    public void setDefense(Integer defense) {
         this.defense = defense;
     }
 
     /**
      * @return the specialAttack
      */
-    public int getSpecialAttack() {
+    public Integer getSpecialAttack() {
         return specialAttack;
     }
 
     /**
      * @param specialAttack the specialAttack to set
      */
-    public void setSpecialAttack(int specialAttack) {
+    public void setSpecialAttack(Integer specialAttack) {
         this.specialAttack = specialAttack;
     }
 
     /**
      * @return the specialDefense
      */
-    public int getSpecialDefense() {
+    public Integer getSpecialDefense() {
         return specialDefense;
     }
 
     /**
      * @param specialDefense the specialDefense to set
      */
-    public void setSpecialDefense(int specialDefense) {
+    public void setSpecialDefense(Integer specialDefense) {
         this.specialDefense = specialDefense;
     }
 
     /**
      * @return the speed
      */
-    public int getSpeed() {
+    public Integer getSpeed() {
         return speed;
     }
 
     /**
      * @param speed the speed to set
      */
-    public void setSpeed(int speed) {
+    public void setSpeed(Integer speed) {
         this.speed = speed;
     }
 
     /**
      * @return the healthPointEVS
      */
-    public int getHealthPointEVS() {
+    public Integer getHealthPointEVS() {
         return healthPointEVS;
     }
 
     /**
      * @param healthPointEVS the healthPointEVS to set
      */
-    public void setHealthPointEVS(int healthPointEVS) {
+    public void setHealthPointEVS(Integer healthPointEVS) {
         this.healthPointEVS = healthPointEVS;
     }
 
     /**
      * @return the attackEVS
      */
-    public int getAttackEVS() {
+    public Integer getAttackEVS() {
         return attackEVS;
     }
 
     /**
      * @param attackEVS the attackEVS to set
      */
-    public void setAttackEVS(int attackEVS) {
+    public void setAttackEVS(Integer attackEVS) {
         this.attackEVS = attackEVS;
     }
 
     /**
      * @return the defenseEVS
      */
-    public int getDefenseEVS() {
+    public Integer getDefenseEVS() {
         return defenseEVS;
     }
 
     /**
      * @param defenseEVS the defenseEVS to set
      */
-    public void setDefenseEVS(int defenseEVS) {
+    public void setDefenseEVS(Integer defenseEVS) {
         this.defenseEVS = defenseEVS;
     }
 
     /**
      * @return the specialAttackEVS
      */
-    public int getSpecialAttackEVS() {
+    public Integer getSpecialAttackEVS() {
         return specialAttackEVS;
     }
 
     /**
      * @param specialAttackEVS the specialAttackEVS to set
      */
-    public void setSpecialAttackEVS(int specialAttackEVS) {
+    public void setSpecialAttackEVS(Integer specialAttackEVS) {
         this.specialAttackEVS = specialAttackEVS;
     }
 
     /**
      * @return the specialDefenseEVS
      */
-    public int getSpecialDefenseEVS() {
+    public Integer getSpecialDefenseEVS() {
         return specialDefenseEVS;
     }
 
     /**
      * @param specialDefenseEVS the specialDefenseEVS to set
      */
-    public void setSpecialDefenseEVS(int specialDefenseEVS) {
+    public void setSpecialDefenseEVS(Integer specialDefenseEVS) {
         this.specialDefenseEVS = specialDefenseEVS;
     }
 
     /**
      * @return the speedEVS
      */
-    public int getSpeedEVS() {
+    public Integer getSpeedEVS() {
         return speedEVS;
     }
 
     /**
      * @param speedEVS the speedEVS to set
      */
-    public void setSpeedEVS(int speedEVS) {
+    public void setSpeedEVS(Integer speedEVS) {
         this.speedEVS = speedEVS;
     }
 
     /**
      * @return the healthPointIVS
      */
-    public int getHealthPointIVS() {
+    public Integer getHealthPointIVS() {
         return healthPointIVS;
     }
 
     /**
      * @param healthPointIVS the healthPointIVS to set
      */
-    public void setHealthPointIVS(int healthPointIVS) {
+    public void setHealthPointIVS(Integer healthPointIVS) {
         this.healthPointIVS = healthPointIVS;
     }
 
     /**
      * @return the attackIVS
      */
-    public int getAttackIVS() {
+    public Integer getAttackIVS() {
         return attackIVS;
     }
 
     /**
      * @param attackIVS the attackIVS to set
      */
-    public void setAttackIVS(int attackIVS) {
+    public void setAttackIVS(Integer attackIVS) {
         this.attackIVS = attackIVS;
     }
 
     /**
      * @return the defenseIVS
      */
-    public int getDefenseIVS() {
+    public Integer getDefenseIVS() {
         return defenseIVS;
     }
 
     /**
      * @param defenseIVS the defenseIVS to set
      */
-    public void setDefenseIVS(int defenseIVS) {
+    public void setDefenseIVS(Integer defenseIVS) {
         this.defenseIVS = defenseIVS;
     }
 
     /**
      * @return the specialAttackIVS
      */
-    public int getSpecialAttackIVS() {
+    public Integer getSpecialAttackIVS() {
         return specialAttackIVS;
     }
 
     /**
      * @param specialAttackIVS the specialAttackIVS to set
      */
-    public void setSpecialAttackIVS(int specialAttackIVS) {
+    public void setSpecialAttackIVS(Integer specialAttackIVS) {
         this.specialAttackIVS = specialAttackIVS;
     }
 
     /**
      * @return the specialDefenseIVS
      */
-    public int getSpecialDefenseIVS() {
+    public Integer getSpecialDefenseIVS() {
         return specialDefenseIVS;
     }
 
     /**
      * @param specialDefenseIVS the specialDefenseIVS to set
      */
-    public void setSpecialDefenseIVS(int specialDefenseIVS) {
+    public void setSpecialDefenseIVS(Integer specialDefenseIVS) {
         this.specialDefenseIVS = specialDefenseIVS;
     }
 
     /**
      * @return the speedIVS
      */
-    public int getSpeedIVS() {
+    public Integer getSpeedIVS() {
         return speedIVS;
     }
 
     /**
      * @param speedIVS the speedIVS to set
      */
-    public void setSpeedIVS(int speedIVS) {
+    public void setSpeedIVS(Integer speedIVS) {
         this.speedIVS = speedIVS;
+    }
+
+    /**
+     * @return the natureID
+     */
+    public Integer getNatureID() {
+        return natureID;
+    }
+
+    /**
+     * @param natureID the natureID to set
+     */
+    public void setNatureID(Integer natureID) {
+        this.natureID = natureID;
+    }
+
+    /**
+     * @return the trainerID
+     */
+    public Integer getTrainerID() {
+        return trainerID;
+    }
+
+    /**
+     * @param trainerID the trainerID to set
+     */
+    public void setTrainerID(Integer trainerID) {
+        this.trainerID = trainerID;
+    }
+
+    /**
+     * @return the singleTrainer
+     */
+    public Trainer getSingleTrainer() {
+        return singleTrainer;
+    }
+
+    /**
+     * @param singleTrainer the singleTrainer to set
+     */
+    public void setSingleTrainer(Trainer singleTrainer) {
+        this.singleTrainer = singleTrainer;
+    }
+
+    /**
+     * @return the singleNature
+     */
+    public Nature getSingleNature() {
+        return singleNature;
+    }
+
+    /**
+     * @param singleNature the singleNature to set
+     */
+    public void setSingleNature(Nature singleNature) {
+        this.singleNature = singleNature;
     }
 
     /**
@@ -383,128 +526,7 @@ public class Pokemon {
     }
 
     /**
-     * @return the level
+     * @return the pokemonID
      */
-    public int getLevel() {
-        return level;
-    }
-
-    /**
-     * @param level the level to set
-     */
-    public void setLevel(int level) {
-        this.level = level;
-    }
-
-    /**
-     * @return the baseHealthPoints
-     */
-    public int getBaseHealthPoints() {
-        return baseHealthPoints;
-    }
-
-    /**
-     * @param baseHealthPoints the baseHealthPoints to set
-     */
-    public void setBaseHealthPoints(int baseHealthPoints) {
-        this.baseHealthPoints = baseHealthPoints;
-    }
-
-    /**
-     * @return the baseAttack
-     */
-    public int getBaseAttack() {
-        return baseAttack;
-    }
-
-    /**
-     * @param baseAttack the baseAttack to set
-     */
-    public void setBaseAttack(int baseAttack) {
-        this.baseAttack = baseAttack;
-    }
-
-    /**
-     * @return the baseDefense
-     */
-    public int getBaseDefense() {
-        return baseDefense;
-    }
-
-    /**
-     * @param baseDefense the baseDefense to set
-     */
-    public void setBaseDefense(int baseDefense) {
-        this.baseDefense = baseDefense;
-    }
-
-    /**
-     * @return the baseSpecialAttack
-     */
-    public int getBaseSpecialAttack() {
-        return baseSpecialAttack;
-    }
-
-    /**
-     * @param baseSpecialAttack the baseSpecialAttack to set
-     */
-    public void setBaseSpecialAttack(int baseSpecialAttack) {
-        this.baseSpecialAttack = baseSpecialAttack;
-    }
-
-    /**
-     * @return the baseSpecialDefense
-     */
-    public int getBaseSpecialDefense() {
-        return baseSpecialDefense;
-    }
-
-    /**
-     * @param baseSpecialDefense the baseSpecialDefense to set
-     */
-    public void setBaseSpecialDefense(int baseSpecialDefense) {
-        this.baseSpecialDefense = baseSpecialDefense;
-    }
-
-    /**
-     * @return the baseSpeed
-     */
-    public int getBaseSpeed() {
-        return baseSpeed;
-    }
-
-    /**
-     * @param baseSpeed the baseSpeed to set
-     */
-    public void setBaseSpeed(int baseSpeed) {
-        this.baseSpeed = baseSpeed;
-    }
-
-    /**
-     * @return the redStat
-     */
-    public String getRedStat() {
-        return redStat;
-    }
-
-    /**
-     * @param redStat the redStat to set
-     */
-    public void setRedStat(String redStat) {
-        this.redStat = redStat;
-    }
-
-    /**
-     * @return the blueStat
-     */
-    public String getBlueStat() {
-        return blueStat;
-    }
-
-    /**
-     * @param blueStat the blueStat to set
-     */
-    public void setBlueStat(String blueStat) {
-        this.blueStat = blueStat;
-    }
+    
 }

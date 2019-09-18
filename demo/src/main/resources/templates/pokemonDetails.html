@@ -47,7 +47,7 @@
                 </div>
                 <div class="row m-4">
                     <div class="pull-left">
-                        <span><strong> Nature: </strong></span> <span th:text="${singlePokemon.nature}"></span>
+                        <span><strong> Nature: </strong></span> <span th:text="${singlePokemon.singleNature.natureName}"></span>
                     </div>
                 </div>
                 <div class="row m-4">
@@ -58,6 +58,11 @@
                 <div class="row m-4">
                     <div class="pull-left">
                         <span><strong> Description: </strong></span> <span th:text="${singlePokemon.description}"></span>
+                    </div>
+                </div>
+                <div class="row m-4">
+                    <div class="pull-left">
+                        <span><strong> Trainer: </strong></span> <a th:text="${singlePokemon.singleTrainer.trainerName}" th:href="@{/trainerDetails(id=${singlePokemon.singleTrainer.trainerID})}"></a>
                     </div>
                 </div>
                 <div class="row m-4">
@@ -124,7 +129,9 @@
                             <tbody style="font-weight:bold">
                             <td>Total</td>
                             <td th:text="${singlePokemon.healthPoints}"></td>
+<!--                            <td th:if="${singlePokemon.singleNature.blueStat.equals('Attack')}"> <td style="color: blue;" th:text="${singlePokemon.attack}"></td></td>-->
                             <td th:text="${singlePokemon.attack}"></td>
+<!--                             <td th:if="${singlePokemon.singleNature.blueStat.equals('Defense')}"> <td style="color: blue;" th:text="${singlePokemon.attack}"></td> </td>-->
                             <td th:text="${singlePokemon.defense}"></td>
                             <td th:text="${singlePokemon.specialAttack}"></td>
                             <td th:text="${singlePokemon.specialDefense}"></td>
